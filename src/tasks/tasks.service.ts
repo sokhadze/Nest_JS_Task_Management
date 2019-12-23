@@ -30,14 +30,9 @@ export class TasksService {
     return task;
   }
 
-  updateTask(id: number, updateTaskStatusDto: UpdateTaskStatusDto): TaskModel {
-    const task = this.tasks.find(TASK => TASK.id === id);
-    task.status = updateTaskStatusDto.status;
-    this.tasks.find(value => {
-      if (value.id === id) {
-        value.status = updateTaskStatusDto.status;
-      }
-    });
+  updateTask(id: number, status: TaskStatus): TaskModel {
+    const task = this.getTaskById(id);
+    task.status = status;
     return task;
   }
 
